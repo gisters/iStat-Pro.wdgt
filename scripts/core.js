@@ -241,15 +241,17 @@ graph_colors['purple'] = Array("#850de1", "#7e04da", "#7700d2", "#7400cd");
 
 
 function getExtIP(){
-	ipURL = 'http://whatismyip.akamai.com/?random='+new Date().getTime();
+	ipURL = 'http://ip.cn/';
 	ipConnection = new XMLHttpRequest();
 	ipConnection.open("GET",ipURL,true);
 	ipConnection.onreadystatechange = function() {
 		if(ipConnection.readyState == 4 && ipConnection.responseText != null && ipConnection.responseText.length > 0) {
 			extIP = ipConnection.responseText;
-			if(extIP.length < 20 && ipConnection.status == 200 && extIP.match(/\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/)){
-				e("wide_extip").innerHTML = extIP;
-				e("tall_extip").innerHTML = extIP;
+			if(ipConnection.status == 200 && extIP.match(/\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/)){
+				var ip = /\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/;
+				var IPtext = ip.exec(extIP);
+				e("wide_extip").innerHTML = IPtext;
+				e("tall_extip").innerHTML = IPtext;
 				valid_ip = true;
 			} else {
 				valid_ip = false;
