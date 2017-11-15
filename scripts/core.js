@@ -241,7 +241,7 @@ graph_colors['purple'] = Array("#850de1", "#7e04da", "#7700d2", "#7400cd");
 
 
 function getExtIP(){
-	ipURL = 'http://www.ip.cn/';
+	ipURL = 'http://myip.ipip.net/';
 	ipConnection = new XMLHttpRequest();
 	ipConnection.open("GET",ipURL,true);
 	ipConnection.onreadystatechange = function() {
@@ -261,7 +261,7 @@ function getExtIP(){
 		}
 	}
 	ipConnection.send(null);
-}	
+}
 
 function keyUp(event) {
 	if(p.v("skin_type") == 'tall'){
